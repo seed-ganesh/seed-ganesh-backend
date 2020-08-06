@@ -53,7 +53,7 @@ function successHtml(homeURL, orderId, txnId, txnDate) {
                         </div>
                         <div class="row">
                         <div class="col-sm-3">
-                            <a href="http://localhost:8000">Click here for seed-ganesh.com</a>
+                            <a href='${homeURL}'>Click here for seed-ganesh.com</a>
                             </div>
                             <div id="seconds" class="col-sm-9">Redirecting to Seed Ganesha in 10 seconds</div>
                             </div>
