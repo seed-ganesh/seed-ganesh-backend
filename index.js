@@ -70,7 +70,6 @@ app.post('/send-email', (req, res) => {
                 data: data.body
             })
         }).catch(err => {
-            console.log(err, '=====')
             res.send({
                 status: 404,
                 data: err
