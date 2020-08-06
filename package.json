@@ -1,0 +1,29 @@
+{
+  "name": "ganesh-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManikandanH/ganesh-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManikandanH/ganesh-backend/issues"
+  },
+  "homepage": "https://github.com/ManikandanH/ganesh-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase": "^7.17.1",
+    "heroku": "^7.42.6",
+    "node-mailjet": "^3.3.1",
+    "uuid": "^8.3.0"
+  }
+}
