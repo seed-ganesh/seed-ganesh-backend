@@ -20,7 +20,11 @@ const port = process.env.PORT || 3000
 const app = express();
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://seed-ganesh.netlify.app");
+    var allowedOrigins = ['https://seed-ganesh.netlify.app', 'https://seed-ganesh.herokuapp.com' ];
+    var origin = req.headers.origin;
+    if (allowedOrigins.indexOf(origin) > -1) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.header("Access-Control-Allow-Headers", "*");
     res.header("Access-Control-Allow-Methods", 'GET', 'POST');
     next();
