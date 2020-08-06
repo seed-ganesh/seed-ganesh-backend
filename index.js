@@ -20,9 +20,9 @@ const port = process.env.PORT || 3000
 const app = express();
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://seed-ganesh.netlify.app");
     res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Methods", "*");
+    res.header("Access-Control-Allow-Methods", 'GET', 'POST');
     next();
 });
 
