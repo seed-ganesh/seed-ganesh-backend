@@ -26,7 +26,7 @@ app.use((req, res, next) => {
     // }
     res.setHeader('Access-Control-Allow-Origin', "*");
     res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Methods", '*' );
+    res.header("Access-Control-Allow-Methods", 'GET', 'POST');
     next();
 });
 
@@ -102,7 +102,7 @@ app.post('/paynow', (req, res) => {
         resParams['ORDER_ID'] = paymentDetails.orderId;
         resParams['CUST_ID'] = paymentDetails.customerId;
         resParams['TXN_AMOUNT'] = paymentDetails.amount;
-        resParams['CALLBACK_URL'] = `https://seed-ganesh.herokuapp.com/callback`;
+        resParams['CALLBACK_URL'] = `${process.env.CALLBACK_URL}/callback`;
         resParams['EMAIL'] = paymentDetails.customerEmail;
         resParams['MOBILE_NO'] = paymentDetails.customerPhone;
         paytmParams.body = {

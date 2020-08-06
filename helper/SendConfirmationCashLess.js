@@ -90,8 +90,8 @@ function custEmail(customerDetail, productBooked, totalPrice, currentTime, curre
                 "Messages": [
                     {
                         "From": {
-                            "Email": "itsmh0305@gmail.com",
-                            "Name": "Ganesha Eco Store"
+                            "Email": process.env.SENDER_EMAIL,
+                            "Name": "seed-Ganesh"
                         },
                         "To": [
                             {
@@ -243,8 +243,8 @@ function adminEmail(customerDetail, productBooked, totalPrice, currentTime, curr
                 "Messages": [
                     {
                         "From": {
-                            "Email": "itsmh0305@gmail.com",
-                            "Name": "Ganesha Eco Store"
+                            "Email": process.env.SENDER_EMAIL,
+                            "Name": "seed-Ganesh"
                         },
                         "To": [
                             {

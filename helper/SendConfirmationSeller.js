@@ -80,8 +80,8 @@ const sendAdminEmail = (formDetails, totalCartProducts, inputQuantityValue, tota
                 "Messages": [
                     {
                         "From": {
-                            "Email": "itsmh0305@gmail.com",
-                            "Name": "Ganesha Eco Store"
+                            "Email": process.env.SENDER_EMAIL,
+                            "Name": "seed-Ganesh"
                         },
                         "To": [
                             {

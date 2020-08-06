@@ -75,8 +75,8 @@ const sendCustEmail = (formDetails, totalCartProducts, inputQuantityValue, total
                 "Messages": [
                     {
                         "From": {
-                            "Email": "itsmh0305@gmail.com",
-                            "Name": "Ganesha Eco Store"
+                            "Email": process.env.SENDER_EMAIL,
+                            "Name": "seed-Ganesh"
                         },
                         "To": [
                             {
