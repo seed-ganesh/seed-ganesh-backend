@@ -41,7 +41,7 @@ function successHtml(homeURL, orderId, txnId, txnDate) {
                             <strong>Success!</strong>
                         </div>
                         <dl class="dl-horizontal">
-                            <dt>Order-ID</dt>
+                            <dt>order-ID</dt>
                             <dd>${orderId}</dd>
                             <dt>Transaction-ID</dt>
                             <dd>${txnId}</dd>
