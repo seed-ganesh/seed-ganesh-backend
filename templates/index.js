@@ -8,7 +8,7 @@ function successHtml(homeURL, orderId, txnId, txnDate) {
             window.onload = function() {            
                 function timer(){
                     seconds -= 1
-                    document.getElementById('seconds').textContent  = 'Redirecting to Seed Ganesha in ' + seconds + ' ' + 'seconds';
+                    document.getElementById('seconds').textContent  = 'Redirecting to seed-ganesh in ' + seconds + ' ' + 'seconds';
                     if(seconds === 0){1
                         window.location.href='${homeURL}'
                     }
@@ -53,9 +53,9 @@ function successHtml(homeURL, orderId, txnId, txnDate) {
                         </div>
                         <div class="row">
                         <div class="col-sm-3">
-                            <a href='${homeURL}'>Click here for seed-ganesh.com</a>
+                            <a href='${homeURL}'>Click here for seed-ganesh.netify.app/</a>
                             </div>
-                            <div id="seconds" class="col-sm-9">Redirecting to Seed Ganesha in 10 seconds</div>
+                            <div id="seconds" class="col-sm-9">Redirecting to seed-ganesh in 10 seconds</div>
                             </div>
                     </div>
                 </div>

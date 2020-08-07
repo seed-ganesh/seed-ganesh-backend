@@ -127,42 +127,49 @@ function adminEmail(customerDetail, productBooked, totalPrice, currentTime, curr
                             <span style="display: inline-block; word-wrap: break-word">
                                 <p>${customerDetail.Name}</p>
                             </span>
+                            <br/>
                             <span style="display: inline-block">
-                                <p><b>Email</b></p>
+                            <p><b>Email</b></p>
                             </span>
                             <span style="display: inline-block; word-wrap: break-word">
-                                <p>${customerDetail.Email}</p>
+                            <p>${customerDetail.Email}</p>
                             </span>
+                            <br/>
                             <span style="display: inline-block">
-                                <p><b>Mobile_Number</b></p>
+                            <p><b>Mobile_Number</b></p>
                             </span>
                             <span style="display: inline-block; word-wrap: break-word">
-                                <p>${customerDetail.Mobile_Number}</p>
+                            <p>${customerDetail.Mobile_Number}</p>
                             </span>
+                            <br/>
                             <span style="display: inline-block">
-                                <p><b>Address</b></p>
+                            <p><b>Address</b></p>
                             </span>
                             <span style="display: inline-block; word-wrap: break-word">
-                                <p>${customerDetail.Address}</p>
+                            <p>${customerDetail.Address}</p>
                             </span>
+                            <br/>
                             <span style="display: inline-block">
-                                <p><b>City</b></p>
+                            <p><b>City</b></p>
                             </span>
                             <span style="display: inline-block; word-wrap: break-word">
-                                <p>${customerDetail.City}</p>
+                            <p>${customerDetail.City}</p>
                             </span>
+                            <br/>
                             <span style="display: inline-block">
-                                <p><b>State</b></p>
+                            <p><b>State</b></p>
                             </span>
                             <span style="display: inline-block; word-wrap: break-word">
-                                <p>${customerDetail.State}</p>
+                            <p>${customerDetail.State}</p>
                             </span>
+                            <br/>
                             <span style="display: inline-block">
-                                <p><b>Pincode</b></p>
+                            <p><b>Pincode</b></p>
                             </span>
                             <span style="display: inline-block; word-wrap: break-word">
-                                <p>${customerDetail.Pincode}</p>
+                            <p>${customerDetail.Pincode}</p>
                             </span>
+                            <br/>
                         </div >`;
         let emailID = customerDetail.Email
         let name = customerDetail.Name
@@ -252,7 +259,7 @@ function adminEmail(customerDetail, productBooked, totalPrice, currentTime, curr
                                 "Name": 'ADMIN'
                             }
                         ],
-                        "Subject": `Hi Admin this is the order from ${name.value} on ${currentDate} at ${currentTime}`,
+                        "Subject": `Hi Admin this is the order from ${name} on ${currentDate} at ${currentTime}`,
                         "HTMLPart": `${customerHTMLtemplate} `,
                         "CustomID": "AppGettingStartedTest"
                     }
@@ -260,9 +267,11 @@ function adminEmail(customerDetail, productBooked, totalPrice, currentTime, curr
             })
         request
             .then((result) => {
+                console.log(result,'=====')
                 res(result)
             })
             .catch((err) => {
+                console.log(err,'=====')
                 rej(err)
             })
     })
