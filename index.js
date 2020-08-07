@@ -238,7 +238,14 @@ app.post('/callback', (req, res) => {
                             currentDate = data.val().bookedAt
                             currentTime = data.val().bookedOn
                             productBooked = { ...data.val().productBooked }
-
+                            updateData({
+                                ...dbData,
+                                transactionID: resp.body.txnId,
+                                transactionDate: resp.body.txnDate,
+                                transactionAmount: resp.body.txnAmount,
+                                bankName: resp.body.bankName,
+                                bankTransactionId: resp.body.bankTxnId
+                            }, 'orders', reqBody['ORDERID'])
                             custEmail(customerDetail, productBooked, totalPrice, currentTime, currentDate, 'Card/NetBanking/UPI', reqBody['ORDERID'], resp.body.txnId, resp.body.txnDate).then(data => {
                                 if (data.body.Messages[0].Status === 'success') {
                                     return
@@ -246,26 +253,10 @@ app.post('/callback', (req, res) => {
                             })
                                 .then(() => adminEmail(customerDetail, productBooked, totalPrice, currentTime, currentDate, 'Card/NetBanking/UPI', reqBody['ORDERID'], resp.body.txnId, resp.body.txnDate))
                                 .then(data => {
-                                    updateData({
-                                        ...dbData,
-                                        transactionID: resp.body.txnId,
-                                        transactionDate: resp.body.txnDate,
-                                        transactionAmount: resp.body.txnAmount,
-                                        bankName: resp.body.bankName,
-                                        bankTransactionId: resp.body.bankTxnId
-                                    }, 'orders', reqBody['ORDERID'])
                                     res.status(200).send(successHtml(HOME_URL, resp.body.orderId, resp.body.txnId, resp.body.txnDate))
                                     return
                                 })
                                 .catch(() => {
-                                    updateData({
-                                        ...dbData,
-                                        transactionID: resp.body.txnId,
-                                        transactionDate: resp.body.txnDate,
-                                        transactionAmount: resp.body.txnAmount,
-                                        bankName: resp.body.bankName,
-                                        bankTransactionId: resp.body.bankTxnId
-                                    }, 'orders', reqBody['ORDERID'])
                                     return
                                 })
                         })
