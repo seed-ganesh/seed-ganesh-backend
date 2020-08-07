@@ -74,7 +74,7 @@ function custEmail(customerDetail, productBooked, totalPrice, currentTime, curre
     </div>
     <hr/>
     <div>
-    <h3>Thank you for purchasing with Ganesha Seed, </h3>
+    <h3>Thank you for purchasing with us, </h3>
     <br/>
     Please contact us for any query regarding your orders.
     <hr/>
