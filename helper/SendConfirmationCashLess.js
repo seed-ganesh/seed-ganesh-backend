@@ -239,9 +239,9 @@ function adminEmail(customerDetail, productBooked, totalPrice, currentTime, curr
     <br/>
     <br/>
     <hr/>
+    </div>
     <div style="margin-left: 10px">
     Thanks and Regards<br/>from Admin team.
-    </div>
     </div>
      `
         const request = mailjet
