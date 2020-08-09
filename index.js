@@ -64,7 +64,7 @@ app.post('/send-email', (req, res) => {
                 customerDetail: { ...custDetails },
                 productBooked: { ...productSummary },
                 totalPrice,
-                paymentMode,
+                paymentMode: 'Paytm/UPI',
                 bookedOn: currentDate,
                 bookedAt: currentTime,
             }
@@ -163,7 +163,8 @@ app.post('/paynow', (req, res) => {
                         customerDetail: { ...custDetails },
                         productBooked: { ...productSummary },
                         totalPrice,
-                        paymentMode,
+                        paymentMode: 'Paytm/UPI',
+                        paid: false,
                         bookedOn: currentDate,
                         bookedAt: currentTime,
                     }
@@ -243,7 +244,7 @@ app.post('/callback', (req, res) => {
                                 transactionID: resp.body.txnId,
                                 transactionDate: resp.body.txnDate,
                                 transactionAmount: resp.body.txnAmount,
-                                bankName: resp.body.bankName,
+                                paid: true,
                                 bankTransactionId: resp.body.bankTxnId
                             }, 'orders', reqBody['ORDERID'])
                             custEmail(customerDetail, productBooked, totalPrice, currentTime, currentDate, 'Card/NetBanking/UPI', reqBody['ORDERID'], resp.body.txnId, resp.body.txnDate).then(data => {
