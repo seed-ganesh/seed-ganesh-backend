@@ -65,8 +65,8 @@ app.post('/send-email', (req, res) => {
                 productBooked: { ...productSummary },
                 totalPrice,
                 paymentMode: 'Paytm/UPI',
-                bookedOn: currentDate,
-                bookedAt: currentTime,
+                bookedAt: currentDate,
+                bookedOn: currentTime,
             }
             setData(payload, 'orders', orderID)
             res.send({
@@ -165,8 +165,8 @@ app.post('/paynow', (req, res) => {
                         totalPrice,
                         paymentMode: 'Paytm/UPI',
                         paid: false,
-                        bookedOn: currentDate,
-                        bookedAt: currentTime,
+                        bookedAt: currentDate,
+                        bookedOn: currentTime,
                     }
                     setData(payload, 'orders', orderID)
                     res.status(200).send({ mid: resParams.MID, orderId: resParams.ORDER_ID, txnToken: JSON.parse(response).body.txnToken })
