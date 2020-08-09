@@ -129,7 +129,7 @@ app.post('/paynow', (req, res) => {
 
             var options = {
                 /* for Staging */
-                hostname: 'securegw-stage.paytm.in',
+                hostname: process.env.PAYMENT_API_PAYTM,
                 /* for Production */
                 // hostname: 'securegw.paytm.in',
                 port: 443,
@@ -206,7 +206,7 @@ app.post('/callback', (req, res) => {
             var post_data = JSON.stringify(paytmParams);
 
             var options = {
-                hostname: 'securegw-stage.paytm.in',
+                hostname: process.env.PAYMENT_API_PAYTM,
                 port: 443,
                 path: '/v3/order/status',
                 method: 'POST',
