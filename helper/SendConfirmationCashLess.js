@@ -6,6 +6,7 @@ const mailjet = require('node-mailjet')
 
 function custEmail(customerDetail, productBooked, totalPrice, currentTime, currentDate, paymentMode, orderID, transID, transTime) {
     return new Promise((res, rej) => {
+        const adminNumber = 9176636367
         let orderSummaryInputValues = '';
         let forField = `<div>
                             <p>${customerDetail.Name}</p>
@@ -75,12 +76,11 @@ function custEmail(customerDetail, productBooked, totalPrice, currentTime, curre
     <hr/>
     <div>
     <h3>Thank you for purchasing with us, </h3>
-    <br/>
-    Please contact us for any query regarding your orders.
     <hr/>
     <div>
      Thanks and Regards <br/>
-     xxx<br/>yyyy<br/>zzzz<br/>99999999999
+     For any queries contact below:
+     ${adminNumber}
     </div>
     </div>
      `
