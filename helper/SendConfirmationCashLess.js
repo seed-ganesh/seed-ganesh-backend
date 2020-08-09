@@ -79,7 +79,7 @@ function custEmail(customerDetail, productBooked, totalPrice, currentTime, curre
     <hr/>
     <div>
      Thanks and Regards <br/>
-     For any queries contact below:
+     For any queries contact:
      ${adminNumber}
     </div>
     </div>
