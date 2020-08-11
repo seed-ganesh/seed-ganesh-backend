@@ -1,8 +1,8 @@
 require('dotenv').config()
-
 const mailjet = require('node-mailjet')
-    .connect(process.env.API_KEY, process.env.API_SECRET_KEY)
+.connect(process.env.API_KEY, process.env.API_SECRET_KEY)
 
+const address = require('../templates/Address')
 
 function custEmail(customerDetail, productBooked, totalPrice, currentTime, currentDate, paymentMode, orderID, transID, transTime) {
     return new Promise((res, rej) => {
@@ -79,8 +79,9 @@ function custEmail(customerDetail, productBooked, totalPrice, currentTime, curre
     <hr/>
     <div>
      Thanks and Regards <br/>
+     <br/>
      For any queries contact:
-     ${adminNumber}
+     ${address}
     </div>
     </div>
      `
