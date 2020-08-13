@@ -268,11 +268,9 @@ function adminEmail(customerDetail, productBooked, totalPrice, currentTime, curr
             })
         request
             .then((result) => {
-                console.log(result,'=====')
                 res(result)
             })
             .catch((err) => {
-                console.log(err,'=====')
                 rej(err)
             })
     })

@@ -13,6 +13,7 @@ const { setData, updateData } = require('./helper/Firebase.service')
 const { v4: uuidv4 } = require('uuid');
 const { successHtml, errorHtml } = require('./templates');
 const { custEmail, adminEmail } = require('./helper/SendConfirmationCashLess');
+const { sendCustEmailAlone, sendAdminEmailAlone } = require('./helper/SendEmail');
 require('dotenv').config()
 initialisation()
 
@@ -26,7 +27,7 @@ app.use((req, res, next) => {
     // }
     res.setHeader('Access-Control-Allow-Origin', "*");
     res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Methods", 'GET', 'POST');
+    res.header("Access-Control-Allow-Methods", '*');
     next();
 });
 
@@ -36,6 +37,60 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.send('Welcome to home route')
 })
+
+app.post('/send-email-only', (req, res) => {
+    const { formDetails, totalCartProducts, inputQuantityValue, totalPrice, currentTime, currentDate, paymentMode, orderID } = req.body
+    const custDetails = {}
+    const variantName = Object.keys(totalCartProducts).map(prop => prop)
+    const productSummary = { ...totalCartProducts }
+    formDetails.forEach(formData => {
+        custDetails[formData.formName] = formData.value
+    })
+    variantName.forEach(variant => {
+        productSummary[variant].quantity = inputQuantityValue[variant]
+    })
+    const payload = {
+        _ID: uuidv4(),
+        orderID,
+        customerDetail: { ...custDetails },
+        productBooked: { ...productSummary },
+        totalPrice,
+        bookedAt: currentDate,
+        bookedOn: currentTime,
+    }
+    setData(payload, 'orders', orderID)
+    sendCustEmailAlone(formDetails, totalCartProducts, inputQuantityValue, totalPrice, currentTime, currentDate, paymentMode, orderID).then(data => {
+        if (data.body.Messages[0].Status === 'success') {
+            return
+        }
+        res.send({
+            status: 400,
+            error: 'server Error'
+        })
+    })
+        .then(() => sendAdminEmailAlone(formDetails, totalCartProducts, inputQuantityValue, totalPrice, currentTime, currentDate, paymentMode, orderID))
+        .then(data => {
+            const custDetails = {}
+            const variantName = Object.keys(totalCartProducts).map(prop => prop)
+            const productSummary = { ...totalCartProducts }
+            formDetails.forEach(formData => {
+                custDetails[formData.formName] = formData.value
+            })
+            variantName.forEach(variant => {
+                productSummary[variant].quantity = inputQuantityValue[variant]
+            })
+            res.send({
+                status: 201,
+                data: data.body
+            })
+        }).catch(err => {
+            res.send({
+                status: 404,
+                data: err
+            })
+        })
+})
+
 app.post('/send-email', (req, res) => {
     const { formDetails, totalCartProducts, inputQuantityValue, totalPrice, currentTime, currentDate, paymentMode, orderID } = req.body
     sendCustEmail(formDetails, totalCartProducts, inputQuantityValue, totalPrice, currentTime, currentDate, paymentMode, orderID).then(data => {
